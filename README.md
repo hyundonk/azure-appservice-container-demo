@@ -32,13 +32,13 @@ storage_account {
   }
 ```
 
-
-
+Azure App Service는 Continuous Deployment를 위한 webhook 수신 기능을 제공합니다. 이 webhook URL을 Azure Container Registry 또는 Docker Hub에 추가하여 이미지가 업데이트 되면 자동으로 해당 Container Registry로 부터 업데이트된 이미지를 Pull하여 container를 재구동 합니다. https://docs.microsoft.com/en-us/azure/app-service/deploy-ci-cd-custom-container 참조. (Azure Container Regitry의 webhook 기능은 https://docs.microsoft.com/en-us/azure/container-registry/container-registry-webhook 참조) 
 
 
 **Azure Container Registry**
 
 Application에서 사용할 container image를 가지고 있습니다. App Service의 앱은 시작시 해당 Azure Container Registry에서 지정된 application container image를 pull한 뒤 container를 구동합니다. 본 데모에서는 아래 Azure CLI 명령을 이용하여 ACR에 접근을 위한 password를 할당 받았습니다. 실제 Production 환경에서는 Managed Identity를 생성하여 해당 Identity에 해당 ACR 리소스에 대한 "ACRPull" 권한을 부여하고 App Service에 해당 Identity를 연결하는 방법을 권고합니다. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication-managed-identity 참조). Container 이미지를 생성하고 ACR에 push한는 방법은 https://docs.microsoft.com/en-us/azure/app-service/configure-custom-container 문서를 참조하시기 바랍니다. 
+
 
 ```
 # Login to ACR
